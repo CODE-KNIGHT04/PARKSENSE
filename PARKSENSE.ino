@@ -1,17 +1,10 @@
+
+#include "credentials.h"
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 #include <Stepper.h>
-// -----------------------------------------------------
-// WiFi Details
-// -----------------------------------------------------
-const char* ssid = "ITS NOTHING";
-const char* password = "00000000";
-// -----------------------------------------------------
-// MQTT Broker (Raspberry Pi)
-// -----------------------------------------------------
-const char* mqtt_server = "10.197.116.187";
 // -----------------------------------------------------
 // Clients
 // -----------------------------------------------------
@@ -59,7 +52,7 @@ const unsigned long gateDuration = 5000;
 float getDistance(int trigPin, int echoPin) {
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
-  digitalWrite(trigPin, HIH);
+  digitalWrite(trigPin, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
   long duration = pulseIn(echoPin, HIGH, 30000);
@@ -132,6 +125,7 @@ void updateParkingData() {
   mqttClient.publish("esp32/data",payload.c_str());
   Serial.println("MQTT Data Sent:");
   Serial.println(payload);
+}
 }
 // -----------------------------------------------------
 // Setup
