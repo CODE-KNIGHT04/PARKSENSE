@@ -62,7 +62,6 @@ Ultrasonic Sensors
 ``` text
 ├── Arduino_Code/
 ├── Dashboard/
-├── Circuit_Diagram/
 ├── Images/
 ├── README.md
 ```
